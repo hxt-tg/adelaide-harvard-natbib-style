@@ -1,0 +1,75 @@
+\documentclass[a4paper]{article}
+
+% Margins
+\usepackage[a4paper,left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% AMS Packages
+\usepackage{amsmath,amssymb,amsfonts,amsbsy}
+
+% Links
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,allcolors=blue}
+
+% References
+\usepackage{natbib}
+% \providecommand\adelaideyearleft{(}
+% \providecommand\adelaideyearright[1]{)}
+\setcitestyle{aysep={}}
+\bibliographystyle{uniadelaide}
+
+% Random Texts (Can be removed)
+\usepackage{lipsum}
+
+% Author info
+\title{LaTeX Article}
+\author{TG}
+\date{March 13, 2025}
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    Your abstract goes here...
+
+    ...
+\end{abstract}
+
+{\hypersetup{hidelinks} \tableofcontents} % This may not be neccessary?
+
+\section{Structure}
+\label{sec:structure}  % Make a label which lets this section can be "\ref"ed in the article.
+
+\lipsum[1-2]
+
+\subsection{Top Matter}
+
+\lipsum[3-4]
+
+\subsubsection{Article Information}
+
+\lipsum[5-6]
+
+\section{TTTTTTTTTTT}
+
+You should always use \verb|\citep{}| to produce citations.
+
+This page gives a brief introduction on LaTeX \citep{wikibooksLaTeXDocStruct} and on BibTeX \citep{overleafBibTeX}.
+
+This is a cite of UniAustralia Harvard style \citep[p.~2]{vaswani2017attention} (cite for page 2) and \citep[pp.~3-4]{vaswani2017attention} (cite for multiple pages 3$\sim$4). Or without page \citep{vaswani2017attention}.
+
+\begin{enumerate}
+    \item This is a citation for one author \citep{ticker2017music}.
+    \item Two authors \citep{habel2009academic}.
+    \item Three or more \citep{mnih2015human}.
+    \item You can use this website to generate bibtex from URL \citep{getbibtexBibTeXGenerator}.
+\end{enumerate}
+
+And This is a ref to the first section \ref{sec:structure}. 
+
+The blue hyperlink on the correct reference need \emph{TWICE BUILD} the .tex file. (In VSCode this means click build twice.) Because the FIRST BUILD produces the contents and reference position information. The SECOND BUILD makes links.
+
+\bibliography{biblio}
+
+\end{document}
