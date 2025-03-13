@@ -1,4 +1,5 @@
-% BibTeX standard bibliography style `agsm' (one of the harvard family)
+% BibTeX standard bibliography style `uniadelaide' for University of Adelaide.
+  % derived from `agsm' (one of the harvard family)
 	% version 0.99a for BibTeX versions 0.99a or later, LaTeX version 2.09.
 	% Copyright (C) 1991, all rights reserved.
 	% Copying of this file is authorized only if either
@@ -10,12 +11,38 @@
 	% The file harvard.tex has the documentation for this style.
 
 % ACKNOWLEDGEMENT:
-%   This document is a modified version of alpha.bst to which it owes much of
+%   This document is a modified version of agsm.bst to which it owes much of
 %   its functionality.
 
 % AUTHOR
-%   Peter Williams, Key Centre for Design Quality, Sydney University
-%   e-mail: peterw@archsci.arch.su.oz.au
+%   https://github.com/hxt-tg
+
+% VERSION
+%   0.1.0
+
+% MAIN DIFFERENCES:
+%   1. Remove dot symbol after surname abbriviation
+%   2. Remove parenthenses before and after year. You can redefine them by adding
+%        \providecommand\adelaideyearleft{(}
+%        \providecommand\adelaideyearright[1]{)}
+%      before \bibliographystyle{uniadelaide}.
+%   3. Remove dot between multiple surnames.
+%   4. Support website/vieweddate label:
+%      `@misc' is for website bibliograph
+%      `title' is title of webpage
+%      `website' is title of website
+%      `vieweddate' is date of webpage viewed
+%      Example:
+%        @misc{wikibooksLaTeXDocStruct,
+%          author = {Wikibooks},
+%          title = {{L}a{T}e{X}/{D}ocument {S}tructure},
+%          howpublished = {\url{https://en.wikibooks.org/wiki/LaTeX/Document_Structure}},
+%          year = {2022},
+%          website = {Wikibooks},
+%          vieweddate = {13 May 2025}
+%        }
+%   5. (Under dev.) Remove default sorting rule. The default order is by appearance.
+
 
 ENTRY
   { address
@@ -39,7 +66,9 @@ ENTRY
     title
     type
     URL
+    vieweddate
     volume
+    website
     year
   }
   { field.used etal.allowed etal.required} %%%XXX change
@@ -197,14 +226,14 @@ FUNCTION {format.names}
 FUNCTION {format.authors}
 { author empty$
     { "" }
-    { "{vv~}{ll}{, jj}{, f.}" author format.names }
+    { "{vv~}{ll}{, jj}{, f{}}" author format.names }
   if$
 }
 
 FUNCTION {format.editors}
 { editor empty$
     { "" }
-    { "{vv~}{ll}{, jj}{, f.}" editor format.names
+    { "{vv~}{ll}{, jj}{, f{}}" editor format.names
       editor num.names$ #1 >
 	{ ", eds" * }
 	{ ", ed." * }
@@ -354,21 +383,26 @@ FUNCTION {format.pages}
 }
 
 FUNCTION {format.vol.num.pages}
-{ volume embolden field.or.null
+{ volume empty$
+    'skip$
+    { ", vol. " volume *
+    }
+  if$
   number empty$
     'skip$
-    { "(" number * ")" * *
+    { ", no. " number * "" * *
       volume empty$
 	{ "there's a number but no volume in " cite$ * warning$ }
 	'skip$
       if$
     }
   if$
+
   pages empty$
     'skip$
     { duplicate$ empty$
 	{ pop$ format.pages }
-	{ ",~" * pages n.dashify * }
+	{ ",~" * format.pages * }
       if$
     }
   if$
@@ -699,7 +733,7 @@ FUNCTION {article}
   if$
   crossref missing$
     { journal emphasize "journal" duplicate$ item.check
-      " " * format.vol.num.pages * output
+      format.vol.num.pages * output
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -907,7 +941,15 @@ FUNCTION {misc}
     { skip$ }
     { format.title quote output }
   if$
-  howpublished output
+  website output
+  vieweddate empty$
+    { skip$ }
+    { "viewed " vieweddate * output }
+  if$
+  howpublished empty$
+    { skip$ }
+    { "$<$" howpublished * "$>$" * output }
+  if$
   new.block
   note output
   fin.entry
@@ -1219,9 +1261,11 @@ FUNCTION {first.presort}
 
 ITERATE {preliminaries}
 
-ITERATE {first.presort}
+ITERATE {calc.label}  % Comment this if use presort
 
-SORT
+% ITERATE {first.presort}
+
+% SORT
 
 STRINGS { last.sort.label next.extra last.full.label}
 
@@ -1291,9 +1335,9 @@ FUNCTION {reverse.pass}
   extra.label 'next.extra :=
 }
 
-ITERATE {first.presort}
+% ITERATE {first.presort}
 
-SORT
+% SORT
 
 EXECUTE {initialize.last.extra.num}
 
@@ -1324,9 +1368,9 @@ FUNCTION {second.presort}
   'sort.key$ :=
 }
 
-ITERATE {second.presort}
+% ITERATE {second.presort}
 
-SORT
+% SORT
 
 FUNCTION {begin.bib}
 { preamble$ empty$
@@ -1336,6 +1380,10 @@ FUNCTION {begin.bib}
       "\harvardpreambletext{%" write$ newline$
       preamble$ write$ "}" write$ newline$ }
   if$
+  "\providecommand\adelaideyearleft{}" write$ newline$
+  "\providecommand\adelaideyearright{}" write$ newline$
+  "\renewcommand\harvardyearleft{\adelaideyearleft}" write$ newline$
+  "\renewcommand\harvardyearright{\adelaideyearright}" write$ newline$
   "\begin{thebibliography}{xx}" write$ newline$
 }
 
