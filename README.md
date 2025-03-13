@@ -12,7 +12,7 @@ See also: https://www.adelaide.edu.au/library/ua/media/4332/library-qrg-harvard-
 
 ## Usage
 
-1. Copy the `uniadelaide.bst` to the root of LaTeX project root directory. Include `natlib` package with its configures after the document class definition.
+1. Copy the `uniadelaide.bst` to the root of LaTeX project directory. Include `natlib` package with its configurations after the document class definition.
 
     ```latex
     \documentclass{...}
