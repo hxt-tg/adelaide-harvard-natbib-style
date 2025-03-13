@@ -95,13 +95,13 @@ Other types of styles are not tested yet.
 Documenting / Publishing:
 
 - [ ] Rewrite `main.tex` as a user/dev guide of `uniadelaide.bst`.
-- [ ] Add all citations in the *Harvard referencing guide*.
+- [ ] Add all citations in the *Harvard referencing guide* into guide.
 - [ ] Publish as a public CTAN package.
 
 ## Contribute
 
-If you find some issues, you can feedback via `GitHub Issues` on this repository.
+If you find some issues, you can feedback via *GitHub Issues* on this repository.
 
 If you have work out an approach to fix a issue (excellent!), you can make a pull request~
 
-If you want to know the way working on Bibliography style (.bst) files, the best resource (may) be *Tame the BeaST  --  The B to X of BibTeX* by Nicolas Markey. After install the TeXLive fully, the PDF version is located on `texlive\XXXX\texmf-dist\doc\bibtex\tamethebeast\ttb_en.pdf`. It will be a good start if you decide to learn a devil-like postfix language, so-called *Reverse Polish Notation*. Nicolas Markey introduces it on chapter 16.
+If you want to know the way working on Bibliography style (.bst) files, the best resource is *Tame the BeaST  --  The B to X of BibTeX* by Nicolas Markey. After install the TeXLive fully, the PDF version is located on `texlive\XXXX\texmf-dist\doc\bibtex\tamethebeast\ttb_en.pdf`. It will be a good start if you decide to learn a devil-like postfix language, so-called *Reverse Polish Notation*. Nicolas introduces it on chapter 16.
