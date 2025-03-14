@@ -22,10 +22,9 @@
 \usepackage{lipsum}
 
 % Author info
-\title{uniadelaide.bst - natbib style for UniAdelaide}
+\title{\texttt{uniadelaide.bst} \\ {\normalsize \texttt{natbib} bibliography style for UniAdelaide}}
 \author{hxt-tg}
 \date{March 13, 2025}
-
 
 \begin{document}
 \maketitle
@@ -53,22 +52,57 @@
 
 \section{Citation test}
 
+This is a ref to the first section \ref{sec:structure}. 
+
 You should always use \verb|\citep{}| to produce citations.
 
 This page gives a brief introduction on LaTeX \citep{wikibooksLaTeXDocStruct} and on BibTeX \citep{overleafBibTeX}.
 
 This is a cite of UniAustralia Harvard style \citep[p.~2]{vaswani2017attention} (cite for page 2) and \citep[pp.~3-4]{vaswani2017attention} (cite for multiple pages 3$\sim$4). Or without page \citep{vaswani2017attention}.
 
-\begin{enumerate}
-    \item This is a citation for one author \citep{ticker2017music}.
-    \item Two authors \citep{habel2009academic}.
-    \item Three or more \citep{mnih2015human}.
-    \item You can use this website to generate bibtex from URL \citep{getbibtexBibTeXGenerator}.
-\end{enumerate}
-
-And This is a ref to the first section \ref{sec:structure}. 
+You can use this website to generate bibtex from URL \citep{getbibtexBibTeXGenerator}.
 
 The blue hyperlink on the correct reference need \emph{TWICE BUILD} the .tex file. (In VSCode this means click build twice.) Because the FIRST BUILD produces the contents and reference position information. The SECOND BUILD makes links.
+
+\section{Test citation in \em{Harvard Referencing Guide}}
+
+\subsection{Journal articles}
+
+\begin{description}
+    \item[\citep{habel2009academic}] In print or from a UofA database
+    \item[\citep{waqas2022damage}] In print or from a UofA database (This example is quite strange in the original guide.
+    Because there is no period at the end of reference. Also there is \texttt{[no pagination]}, but no other examples support this style.)
+    \item[\citep{ticker2017music}] From Web (freely available from an e-journal website)
+    \item[\citep{darwin2009mentoring}] Two authors
+    \item[\citep{maier2007using}] Three authors
+    \item[\citep{grosso2017coffee}] Four or more authors
+    \item[\citep{lee2017relationship}] With DOI (Digital Object Identifier)
+    \item[\citep{muldoon2013longitudinal}] In press / advance online publication
+\end{description}
+
+\subsection{Books}
+
+\begin{description}
+    \item[\citep{connell2009gender}] In print
+    \item[\citep{white2020critical}] E-book (from UofA database)
+    \item[\citep{teresa2015mass}] E-book (from web)
+    \item[\citep{campbell2010students}] Two or three authors
+    \item[\citep{henkin2006nuclear}] Four or more authors
+    \item[\citep{2002style}] Book with no author
+    \item[\citep{warner2010giving}] Book chapter in edited book
+    \item[\citep{carroll2012business}] Book with an edition number
+    \item[\citep{cowie1983oxford}] Book with a volume number
+    \item[\citep{lemmens2010lagrammaire}] Book written in a foreign language
+    \item[\citep{jansson1948finn}] Book translated from a foreign language (There's a problem in original guide - the title is not is italics.)
+\end{description}
+
+\subsection{Conference publications}
+
+\begin{description}
+    \item[\citep{laptev2008learning}] Conference paper published in edited book of proceedings (in print or accessed from UofA database)
+    \item[\citep{crisp2010assessing}] Conference paper published online
+    \item[\citep{butler2009using}] Conference presentation (unpublished) (If using `paper presented at XXX`, move it into type rather than booktitle.)
+\end{description}
 
 \bibliography{biblio}
 

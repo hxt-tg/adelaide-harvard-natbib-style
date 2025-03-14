@@ -1,7 +1,7 @@
 # adelaide-harvard-natbib-style
 
-![Static Badge](https://img.shields.io/badge/Working_Status-Under_Development-pink?link=https%3A%2F%2Fgithub.com%2Fhxt-tg%2Fadelaide-harvard-natbib-style)
-![Version Badge](https://img.shields.io/badge/Version-0.1.0-blue?link=https%3A%2F%2Fgithub.com%2Fhxt-tg%2Fadelaide-harvard-natbib-style)
+![Static Badge](https://img.shields.io/badge/Working_status-Under_development-pink?link=https%3A%2F%2Fgithub.com%2Fhxt-tg%2Fadelaide-harvard-natbib-style)
+![Version Badge](https://img.shields.io/badge/Version-0.1.1-blue?link=https%3A%2F%2Fgithub.com%2Fhxt-tg%2Fadelaide-harvard-natbib-style)
 
 
 A LaTeX natlib bibliography style (`uniadelaide.bst`) formatted on the Harvard citation style of the University of Adelaide. This style is origined from `agsm.bst` which also belongs to the Harvard Styling family.
@@ -96,6 +96,17 @@ Documenting / Publishing:
 
 - [ ] Rewrite `main.tex` as a user/dev guide of `uniadelaide.bst`.
 - [ ] Add all citations in the *Harvard referencing guide* into guide.
+  - [x] **Journal articles**
+  - [x] **Books**
+  - [x] **Conference publications**
+  - [ ] **Newspaper or magazine article**
+  - [ ] **Reference work**
+  - [ ] **Dataset**
+  - [ ] **Webpage**
+  - [ ] **Social media**
+  - [ ] **Audiovisual**
+  - [ ] **Image**
+  - [ ] **Other reference types**
 - [ ] Publish as a public CTAN package.
 
 ## Contribute
