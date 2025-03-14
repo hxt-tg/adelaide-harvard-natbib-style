@@ -56,14 +56,14 @@ See also: https://www.adelaide.edu.au/library/ua/media/4332/library-qrg-harvard-
     before `\bibliographystyle{uniadelaide}`.
 
 3. Remove dot between multiple surnames.
-4. Support `website`/`vieweddate` label:
+4. Support `type`/`vieweddate` label:
 
     |Symbols|Meaning|
     |-|-|
     |`@misc`| Bib item for website bibliograph |
     |`howpublished`| URL |
     |`title`| Title of webpage |
-    |`website`| Title of website |
+    |`type`| Title of website |
     |`vieweddate`| Date of webpage viewed |
 
     Example:
@@ -94,7 +94,7 @@ Other types of styles are not tested yet.
 
 Documenting / Publishing:
 
-- [ ] Rewrite `main.tex` as a user/dev guide of `uniadelaide.bst`.
+- [ ] Rewrite `main.tex` as a self-explained user/dev guide of `uniadelaide.bst`.
 - [ ] Add all citations in the *Harvard referencing guide* into guide.
   - [x] **Journal articles**
   - [x] **Books**
