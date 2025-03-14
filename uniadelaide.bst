@@ -820,23 +820,17 @@ FUNCTION {inbook}
 { output.bibitem
   list.label.output
   " \harvardyearleft " list.year * "\harvardyearright " * output.nonnull
-  author empty$
-    { editor "author and editor" item.check }
-    { crossref missing$
-        { "author and editor" editor either.or.check }
-        'skip$
-      if$
-    }
-  if$
+  author "author" item.check
   title.field field.used =
     { skip$ }
-    { format.btitle "title" output.check
+    { format.title quote "title" output.check
       format.translators.reverse output
     }
   if$
   crossref missing$
     { format.bvolume output
       format.number.series output
+      format.in.ed.booktitle "booktitle" output.check
       format.edition output
       publisher "publisher" output.check
       address output
