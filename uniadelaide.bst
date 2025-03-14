@@ -37,6 +37,7 @@ ENTRY
     number
     organization
     pages
+    publishdate
     publisher
     school
     series
@@ -435,12 +436,14 @@ FUNCTION {format.chapter.pages}
 }
 
 FUNCTION {format.in.ed.booktitle}
-{ booktitle empty$
-    { "" }
+{ ""
+  booktitle empty$
+    'skip$
     { editor empty$
-        { "in {\em " booktitle * "}" * }
-        { "in " format.editors.reverse * ", {\em " * booktitle * "}" *}
+        'skip$
+        { "in " * format.editors.reverse * ", " *}
       if$
+      "{\em " * booktitle * "}" *
     }
   if$
 }
@@ -580,7 +583,18 @@ FUNCTION {format.lab.names.abbr}
   s num.names$ 'numnames :=
   numnames #1 >
     { numnames #2 >
-        { s #1 "{vv~}{ll}" format.name$ " et~al." * }
+        { numnames #3 >
+          { s #1 "{vv~}{ll}" format.name$ " et~al." * }
+          { s #3 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+              { s #1 "{vv~}{ll}" format.name$ " et~al." * }
+              { s #1 "{vv~}{ll}" format.name$ ", " *
+                s #2 "{vv~}{ll}" format.name$ * " \harvardand\ " * 
+                s #3 "{vv~}{ll}" format.name$ * 
+              }
+            if$
+          }
+          if$
+        }
         { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
             { s #1 "{vv~}{ll}" format.name$ " et~al." * }
             { s #1 "{vv~}{ll}" format.name$ " \harvardand\ " *
@@ -780,6 +794,7 @@ FUNCTION {book}
     { format.bvolume output
       format.number.series output
       format.edition output
+      publishdate output
       publisher "publisher" output.check
       address output
     }
@@ -832,6 +847,7 @@ FUNCTION {inbook}
       format.number.series output
       format.in.ed.booktitle "booktitle" output.check
       format.edition output
+      publishdate output
       publisher "publisher" output.check
       address output
     }
@@ -864,6 +880,7 @@ FUNCTION {incollection}
       format.edition output
       format.bvolume output
       format.number.series output
+      publishdate output
       publisher "publisher" output.check
       address output
     }
@@ -893,6 +910,7 @@ FUNCTION {inproceedings}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
+      publishdate output
       address empty$
         { organization output
           publisher output
@@ -916,6 +934,8 @@ FUNCTION {inproceedings}
 }
 
 FUNCTION {conference} { inproceedings }
+FUNCTION {newspaper} { inproceedings }
+FUNCTION {magazine} { inproceedings }
 
 FUNCTION {manual}
 { output.bibitem
@@ -1012,6 +1032,7 @@ FUNCTION {proceedings}
   if$
   format.bvolume output
   format.number.series output
+  publishdate output
   address empty$
     { editor empty$
         { skip$ }

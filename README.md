@@ -85,9 +85,9 @@ See also: https://www.adelaide.edu.au/library/ua/media/4332/library-qrg-harvard-
 
 Developing / Known issues:
 
-- [ ] **All types**: So far, if there are two/three authors, cites omit the second and the third authors using `et al.`. As expect, two or three authors should fully exists. Four or more authors should be in brief.
+- [x] **All types**: So far, if there are two/three authors, cites omit the second and the third authors using `et al.`. As expect, two or three authors should fully exists. Four or more authors should be in brief.
 - [ ] **Webpage**: Some of website tags are not supported yet. Including `blog`, `tweet`, et al.
-- [ ] **Journal articles**: `[no pagination]` / `article no.` is not supported.
+- [x] **Journal articles**: `[no pagination]` / `article no.` is not supported. (No plan to support)
 - [ ] **A far more target**: Refactor on `biblatex` package. This is TBD.
 
 Other types of styles are not tested yet.
@@ -99,7 +99,7 @@ Documenting / Publishing:
   - [x] **Journal articles**
   - [x] **Books**
   - [x] **Conference publications**
-  - [ ] **Newspaper or magazine article**
+  - [x] **Newspaper or magazine article**
   - [ ] **Reference work**
   - [ ] **Dataset**
   - [ ] **Webpage**
